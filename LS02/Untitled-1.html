@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>canvas案例</title>
+    <script type="text/javascript">
+  
+    window.onload = function () {
+        canvasApp();
+    }
+    function canvasApp(){
+        var theCanvas = document.getElementById('canvas');
+        var context = theCanvas.getContext('2d');
+
+        context.fillStyle='red';
+        context.fillRect(0,0,100,100);
+        context.clearRect(25,25,50,50);
+
+        context.moveTo(30, 300);
+        context.lineTo(300, 400);
+        context.lineTo(400,300);
+        context.strokeStyle='blue';
+        context.lineWidth=20;
+        context.stroke();
+        
+        context.beginPath();      
+        context.moveTo(80,80);
+        context.lineTo(300,80);
+        context.lineTo(300,300);
+        context.strokeStyle='green';
+        context.lineWidth=10;
+        context.closePath();
+        context.stroke();
+
+        context.fillRect(600,600,400,400);
+        context.fillStyle='yellow';
+        context.save();
+        context.fillRect(400,400,400,400);
+        context.fillStyle='pink';
+        context.save();
+        context.restore();
+        context.fillRect(500,500,400,400);
+        
+
+        
+        
+        
+        
+        
+        
+        
+    }
+
+
+    </script>
+</head>
+<body>
+     <canvas id="canvas" width="1000" height="1000" style="border:5px solid #ccc" >
+
+     </canvas>
+</body>
+</html>
