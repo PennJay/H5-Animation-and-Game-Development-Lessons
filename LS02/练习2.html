@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>练习2</title>
+    <script>
+            window.onload = function(){
+               canvasApp();
+            }
+            function canvasApp(){
+                var theCanvas = document.getElementById('canvas')
+                var context = theCanvas.getContext('2d');
+                //圆弧
+               context.beginPath();
+               context.arc(100,100,80,Math.PI,Math.PI*1.5,false);
+               context.stroke();
+       
+                
+               context.beginPath();
+               context.arc(100,100,80,Math.PI*0.5,0,true);
+               context.stroke();
+
+                //二次曲线和贝塞尔曲线
+                context.beginPath();
+               context.strokeStyle='red';
+                context.fillStyle='yellow';
+               context.beginPath();
+               context.moveTo(10, 20);
+               context.quadraticCurveTo(100, 150, 10, 20);
+               context.moveTo(150,10);
+               context.bezierCurveTo(0, 110, 300, 210, 150, 310);
+               cxt.stroke();
+               context.closePath();
+
+                //椭圆
+               context.beginPath();
+               context.ellipse(100,100,50,75,0,Math.PI/2,2*Math.PI,false);
+               context.stroke();
+               
+                //三角形
+                function drawTriangle(ctx) {
+            ctx.triangle(10,210,100,20,10,300);
+        }
+
+             //渐变
+               var gr = context.createLinearGradient(200, 250, 300, 350);
+               context.lineWidth = 5;
+               gr.addColorStop(0, 'rgb(255,0,0)');
+               gr.addColorStop(0.5,'rgb(0,255,0)');
+               gr.addColorStop(1,'rgb(255,0,0)');
+               context.strokeStyle = gr;
+               context.strokeRect(200,200,100,100);
+               
+                //图片填充排列
+               var fillImg = new Image();
+               fillImg.src = './image/fill_20*20.gif';
+               fillImg.onload = function (){
+                   var fillPattern = context.createPattern(fillImage,'repeat-x');
+                   context.fillStyle = fillPattern;
+                   context.fillRect(0,0,500,300);
+                   
+               }
+
+              //阴影
+              context.fillStyle = 'red';
+              context.shadowOffsetX=4;
+              context.shadowOffsetY=4;
+              context.shadowColor = 'black';
+              context.shadowBlur = 4;
+              context.fillRect(10,10,100,100);
+
+              //合成
+              context.fillStyle = 'black';
+              context.fillRect(10,10,200,200);
+              context.fillStyle = 'red';
+              context.fillRect(1,1,50,50);
+              context.globalCompositeOperation = 'source-over';
+
+
+              //平移
+              context.fillRect = 'green';
+              context.translate(50,50);
+              context.fillRect(0,0,50,50);
+
+              //旋转
+              var  angleInRadians= 5*Math.PI/180;
+              context.rotate(angleInRadians);
+              context.fillStyle = 'red';
+              context.fillRect(100,100,50,50);
+
+              //text
+              context.font = 'bold 80px Arial';
+              context.fillStyle='red';
+              context.strokeStyle = 'orange';
+              context.textAlign = 'center';
+              context.fillText('text',100,100);
+              context.strokeText('text',100,100);
+
+
+              //剪切
+              //第一个圆
+              context.beginPath();
+              context.fillStyle = 'red';
+              context.arc(cx,cy,radius,0,Math.PI*2,false);
+              context.fill();
+              context.clip();
+              
+              //第二个圆
+              context.beginPath();
+              context.fillStyle = 'pink';
+              context.arc(cx+100,cy,radius,0,Math.PI*2,false);
+              context.fill();
+
+              //第三个圆
+              context.beginPath();
+              context.fillStyle = 'yellow';
+              context.arc(cx,cy+100,radius,0,Math.PI*2,false);
+              context.fill();
+
+              //第四个圆
+              context.beginPath();
+              context.fillStyle = 'green';
+              context.arc(cx,cy,radius,0,Math.PI*2,false);
+              context.lineWidth = 5;
+              context.fill();
+              coneext.stroke();
+
+
+
+
+            
+               
+               
+               
+               
+            }
+           </script>
+</head>
+<body>
+    <canvas id="canvas" width="500" height="500">
+    </canvas> 
+</body>
+</html>
